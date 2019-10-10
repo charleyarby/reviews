@@ -61,7 +61,8 @@ let save = (reviews, cb) => {
   // reviews.forEach((repo)=> {
   //   numberofRepo++;
   for(var i=0; i<10; i++) {
-    for(var j=0; j<=20; j++) {
+    var numReviews = Math.floor(Math.random() * Math.floor(100));
+    for(var j=0; j<=numReviews; j++) {
       const filter = {ListingID: i,
                       ReviewID: j};
       const update = {Title: lorem.generateWords(1),
@@ -97,8 +98,6 @@ let getAll = (cb) => {
   Review.find({ListingID:0})
   .sort({ReviewID: 'asc'})
   .exec(cb)
-
-
 
 }
 save();
