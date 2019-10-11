@@ -21,6 +21,7 @@ class App extends React.Component {
             <div>
               <div>Title: {review.Title} </div>
               <div>Username: {review.Username} </div>
+              <div>Date: {review.TimeFormated} </div>
               <div>Review ID: {review.ReviewID} </div>
               <div>Content: {review.Content} </div>
 
