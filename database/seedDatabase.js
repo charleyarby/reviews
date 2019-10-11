@@ -77,7 +77,7 @@ let save = (reviews, cb) => {
                       Username: faker.name.firstName(),
                       ProfilePic: faker.image.avatar(),
                       Time:newDate,
-                      TimeFormated: moment(newDate).format("LL"),
+                      TimeFormated: moment(newDate).format("MMMM YYYY"),
                       Accuracy: getRandomInt(4)+1,
                       Cleanliness: getRandomInt(4)+1,
                       Value: getRandomInt(4)+1,
@@ -87,7 +87,7 @@ let save = (reviews, cb) => {
                      };
       Review.findOneAndUpdate( filter, update, {new: true, upsert: true}, function(err, doc) {
         if(!err) {
-        console.log('added repo to db')
+       // console.log('added repo to db')
         }
         else if(err) {
           console.log(err)

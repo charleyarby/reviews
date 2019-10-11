@@ -1,5 +1,7 @@
 import React from 'react'
 import Axios from 'axios'
+//import '../../dist/styles.css'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -18,15 +20,17 @@ class App extends React.Component {
     return(
       <div>
            {this.state.reviews.map((review)=>(
-            <div>
-              <div>Title: {review.Title} </div>
-              <div>Username: {review.Username} </div>
-              <img src={review.ProfilePic} alt="face" height="42" width="42"></img>
-              <div>Date: {review.TimeFormated} </div>
-              <div>Review ID: {review.ReviewID} </div>
-              <div>Content: {review.Content} </div>
-
-              <div>-----------------------------------------------------------------------------</div>
+            <div className='review'>
+              <div>
+                <div className="userDate">
+                  <div className='reviewUsername'> {review.Username} </div>
+                  <div className='reviewTime'> {review.TimeFormated} </div>
+                </div>
+                <div className= "reviewImg">
+                  <img className= "Img" src={review.ProfilePic} alt="face" height="50" width="50"></img>
+                </div>
+              </div>
+              <div className='reviewContent'>{review.Content} </div>
             </div>
 
           ))}
