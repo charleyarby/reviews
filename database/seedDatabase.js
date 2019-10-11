@@ -22,6 +22,7 @@ let reviewSchema = mongoose.Schema({
 	Title: String,
   Username: String,
   ProfilePic: String,
+  ProfilePic: String,
   Time: String,
   TimeFormated:String,
 	Content: String,
@@ -74,6 +75,7 @@ let save = (reviews, cb) => {
       const update = {Title: lorem.generateWords(1),
                       Content: lorem.generateParagraphs(1),
                       Username: faker.name.firstName(),
+                      ProfilePic: faker.image.avatar(),
                       Time:newDate,
                       TimeFormated: moment(newDate).format("LL"),
                       Accuracy: getRandomInt(4)+1,
@@ -85,7 +87,7 @@ let save = (reviews, cb) => {
                      };
       Review.findOneAndUpdate( filter, update, {new: true, upsert: true}, function(err, doc) {
         if(!err) {
-        //console.log('added repo to db')
+        console.log('added repo to db')
         }
         else if(err) {
           console.log(err)
@@ -108,7 +110,7 @@ var DateNumbers = moment(formatDate).format("YYYYMMDD")
 return DateNumbers
 }
 
-//save();
+save();
 
 //console.log(faker.image.avatar())
 

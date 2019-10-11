@@ -14,7 +14,7 @@ db.once('open', function() {
 let Review = mongoose.model('Reviews', seedDb.reiewSchema);
 
 let getAll = (cb) => {
-  Review.find({})
+  Review.find({ListingID:0})
   .sort({Time: 'asc'})
   .exec(cb)
 }

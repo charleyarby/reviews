@@ -21,11 +21,12 @@ class App extends React.Component {
             <div>
               <div>Title: {review.Title} </div>
               <div>Username: {review.Username} </div>
+              <img src={review.ProfilePic} alt="face" height="42" width="42"></img>
               <div>Date: {review.TimeFormated} </div>
               <div>Review ID: {review.ReviewID} </div>
               <div>Content: {review.Content} </div>
 
-              <div>-----------------</div>
+              <div>-----------------------------------------------------------------------------</div>
             </div>
 
           ))}
