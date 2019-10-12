@@ -12,7 +12,7 @@ class App extends React.Component {
     }
   }
   componentDidMount(){
-    Axios.get('/ID')
+    Axios.get('/0')
     .then((data)=> {this.setState({
       reviews: data.data
     })})

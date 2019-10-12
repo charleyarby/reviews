@@ -5,7 +5,7 @@ const db = require('../database/index.js')
 
 app.use(express.static(__dirname+ '/../client/dist'));
 
-app.get('/ID', (req, res) => {
+app.get('/0', (req, res) => {
   db.getAll((err, data)=>{
     res.send(data);
   })
