@@ -64,7 +64,7 @@ function getRandomInt(max) {
 }
 
 let save = (reviews, cb) => {
-
+  var test=0;
   for(var i=0; i<10; i++) {
     var numReviews = Math.floor(Math.random() * Math.floor(100));
     for(var j=0; j<=numReviews; j++) {
