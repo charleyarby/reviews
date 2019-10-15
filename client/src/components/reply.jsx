@@ -9,19 +9,19 @@ const OwnerReply = (props) => {
     <div className="reviewReplies" >
       <div>
         <div className="replyImage">
-          <img className= "Img" src={props.replies.OwnerPic} alt="face" height="50" width="50"></img>
+          <img className= "Img" src={props.replies.OwnerPic} alt="face" height="40" width="40"></img>
         </div>
         <div className="replyInfo">
           <div className="OwnerName">{props.replies.OwnerName}</div>
-          <div className="ownerReply">{props.replies.Reply}</div>
+          <div className="OwnerReply">{props.replies.Reply}</div>
           <div className="replyTime">June 2016</div>
         </div>
 
-        
-        
-        
+
+
+
       </div>
-      
+
       </div>
 
     )
