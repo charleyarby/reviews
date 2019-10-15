@@ -1,8 +1,8 @@
 import React from 'react'
 
 const OwnerReply = (props) => {
-  console.log('hi')
-  console.log(props)
+  // console.log('hi')
+  // console.log(props)
   if(props.replies.Reply) {
     return (
 
