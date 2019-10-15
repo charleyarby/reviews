@@ -1,6 +1,6 @@
 import React from 'react'
 import Axios from 'axios'
-import Reply from './reply.jsx'
+import OwnerReply from './reply.jsx'
 //import '../../dist/styles.css'
 
 
@@ -34,7 +34,7 @@ class App extends React.Component {
                 </div>
               </div>
               <div className='reviewContent'>{review.Content} </div>
-              <Reply replies={review.Reply}/>
+              <OwnerReply replies={review}/>
             </div>
              )
            })}
@@ -44,3 +44,5 @@ class App extends React.Component {
 }
 
 export default App
+
+
