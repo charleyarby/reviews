@@ -16,6 +16,7 @@ let Review = mongoose.model('Reviews', seedDb.reiewSchema);
 let getAll = (cb) => {
   Review.find({ListingID:0})
   .sort({Time: 'asc'})
+  .limit(5)
   .exec(cb)
 }
 

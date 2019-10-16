@@ -2,6 +2,7 @@ import React from 'react'
 import Axios from 'axios'
 import OwnerReply from './reply.jsx'
 import AllReviews from './allReviews.jsx'
+import Rating from './Rating.jsx'
 //import '../../dist/styles.css'
 
 
@@ -20,7 +21,8 @@ class App extends React.Component {
   }
   render(){
     return(
-      <div>
+      <div className='review'>
+        <Rating allReviews={this.state.reviews}/>
         <AllReviews allReviews={this.state.reviews}/>
       </div>
     )
