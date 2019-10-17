@@ -33,7 +33,17 @@ const Rating = (props) => {
 
   var Checkin= width* (allRatings.Checkin/5)
   Checkin= Checkin.toString() + '%'
-  console.log(Checkin);
+  var Cleanliness= width* (allRatings.Cleanliness/5)
+  Cleanliness= Cleanliness.toString() + '%'
+  var Communication= width* (allRatings.Communication/5)
+  Communication= Communication.toString() + '%'
+  var Accuracy= width* (allRatings.Accuracy/5)
+  Accuracy= Accuracy.toString() + '%'
+  var Location= width* (allRatings.Location/5)
+  Location= Location.toString() + '%'
+  var Value= width* (allRatings.Value/5)
+  Value= Value.toString() + '%'
+
   return(
   <div className="ratingSection">
     <div className='averageRating'>{allRatings.Average}</div>
@@ -58,6 +68,14 @@ const Rating = (props) => {
         <div className='categories'>
         <div>
            <hr style={fullBarRight}></hr>
+           <hr style={{
+                        position:'absolute',
+                        border: '3px solid #04868b',
+                        borderRadius: '2px',
+                        width:Cleanliness,
+                        left:'67%'
+           }}></hr>
+           <div className='rightRating'>{allRatings.Cleanliness}</div>
           </div>
           <div>Cleanliness</div>
 
