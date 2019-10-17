@@ -21,7 +21,7 @@ class App extends React.Component {
   }
   render(){
     return(
-      <div className='review'>
+      <div className='Review'>
         <Rating allReviews={this.state.reviews}/>
         <AllReviews allReviews={this.state.reviews}/>
       </div>

@@ -10,6 +10,7 @@ const Rating = (props) => {
     Value:0,
     Average:0
   }
+  var width = 13;
   for(var review=0; review<props.allReviews.length; review++) {
     allRatings.Checkin += props.allReviews[review].Checkin
     allRatings.Communication += props.allReviews[review].Communication
@@ -30,7 +31,9 @@ const Rating = (props) => {
   allRatings.Average = (allRatings.Average/6).toFixed(2)
   allRatings.Average = Number(allRatings.Average)
 
-  console.log(allRatings)
+  var Checkin= width* (allRatings.Checkin/5)
+  Checkin= Checkin.toString() + '%'
+  console.log(Checkin);
   return(
   <div className="ratingSection">
     <div className='averageRating'>{allRatings.Average}</div>
@@ -40,8 +43,15 @@ const Rating = (props) => {
         <div className='categories'>
           <div>
            <hr style={fullBarLeft}></hr>
+           <hr style={{
+                        position:'absolute',
+                        border: '3px solid #04868b',
+                        borderRadius: '2px',
+                        width:Checkin,
+                        left:'17%'
+           }}></hr>
+           <div className='leftRating'>{allRatings.Checkin}</div>
           </div>
-
           <div>Check-in</div>
 
         </div>
@@ -71,20 +81,20 @@ export default Rating;
 
 
 const starStyle = {
-  color:'rgb(19, 138, 138)'
+  color:'#04868b'
 }
 
 const fullBarLeft = {
   position:'absolute',
-  border: '3px solid rgb(19, 138, 138)',
+  border: '3px solid #c1d5d6',
   borderRadius: '2px',
-  width:'20%',
-  left:'20%'
+  width:'13%',
+  left:'17%'
 }
 const fullBarRight = {
   position:'absolute',
-  border: '3px solid rgb(19, 138, 138)',
+  border: '3px solid #c1d5d6',
   borderRadius: '2px',
-  width:'20%',
-  left:'70%'
+  width:'13%',
+  left:'67%'
 }
