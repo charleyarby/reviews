@@ -3,6 +3,7 @@ import Axios from 'axios'
 import OwnerReply from './reply.jsx'
 import AllReviews from './allReviews.jsx'
 import Rating from './Rating.jsx'
+import PageButtons from './PageButtons.jsx'
 //import '../../dist/styles.css'
 
 
@@ -24,6 +25,7 @@ class App extends React.Component {
       <div className='Review'>
         <Rating allReviews={this.state.reviews}/>
         <AllReviews allReviews={this.state.reviews}/>
+        <PageButtons />
       </div>
     )
   }
