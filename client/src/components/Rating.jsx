@@ -78,16 +78,74 @@ const Rating = (props) => {
            <div className='rightRating'>{allRatings.Cleanliness}</div>
           </div>
           <div>Cleanliness</div>
-
         </div>
       </div>
+
+
+
       <div className='categoryRow'>
-        <div className='categories'>Communication</div>
-        <div className='categories'>Accuracy</div>
+        <div className='categories'>
+          <div>
+           <hr style={fullBarLeft}></hr>
+           <hr style={{
+                        position:'absolute',
+                        border: '3px solid #04868b',
+                        borderRadius: '2px',
+                        width:Communication,
+                        left:'17%'
+           }}></hr>
+           <div className='leftRating'>{allRatings.Communication}</div>
+          </div>
+          <div>Communication</div>
+
+        </div>
+        <div className='categories'>
+        <div>
+           <hr style={fullBarRight}></hr>
+           <hr style={{
+                        position:'absolute',
+                        border: '3px solid #04868b',
+                        borderRadius: '2px',
+                        width:Accuracy,
+                        left:'67%'
+           }}></hr>
+           <div className='rightRating'>{allRatings.Accuracy}</div>
+          </div>
+          <div>Accuracy</div>
+        </div>
       </div>
+
+
       <div className='categoryRow'>
-        <div className='categories'>Location</div>
-        <div className='categories'>Value</div>
+        <div className='categories'>
+          <div>
+           <hr style={fullBarLeft}></hr>
+           <hr style={{
+                        position:'absolute',
+                        border: '3px solid #04868b',
+                        borderRadius: '2px',
+                        width:Location,
+                        left:'17%'
+           }}></hr>
+           <div className='leftRating'>{allRatings.Location}</div>
+          </div>
+          <div>Location</div>
+
+        </div>
+        <div className='categories'>
+        <div>
+           <hr style={fullBarRight}></hr>
+           <hr style={{
+                        position:'absolute',
+                        border: '3px solid #04868b',
+                        borderRadius: '2px',
+                        width:Value,
+                        left:'67%'
+           }}></hr>
+           <div className='rightRating'>{allRatings.Value}</div>
+          </div>
+          <div>Value</div>
+        </div>
       </div>
     </div>
   </div>
