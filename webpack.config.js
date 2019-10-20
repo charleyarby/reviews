@@ -1,41 +1,38 @@
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var SRC_DIR = path.join(__dirname, '/client/src');
-var DIST_DIR = path.join(__dirname, '/client/dist');
+// Webpack uses this to work with directories
+const path = require('path');
 
+// This is main configuration object.
+// Here you write different options and tell Webpack what to do
 module.exports = {
-  entry: `${SRC_DIR}/index.jsx`,
+
+  // Path to your entry point. From this file Webpack will begin his work
+  entry: "./client/src/index.js",
+
+  // Path and filename of your result bundle.
+  // Webpack will bundle all JavaScript into this file
   output: {
-    filename: 'bundle.js',
-    path: DIST_DIR
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
-  module : {
-    loaders : [
-      {
-        test : /\.jsx?/,
-        include : SRC_DIR,
-        loader : 'babel-loader',
-        query: {
-          presets: ['react', 'es2015'],
-          plugins: [
-            '@babel/transform-react-jsx',
-            [
-              'react-css-modules',
-              {
-                context
-              }
-            ]
-          ]
+  module: {
+    rules: [
+    {
+      test: /\.js$/,
+      exclude: /(node_modules)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
         }
-      },
-      {
-        loaders: [
-          'style-loader',
-          'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
-        ],
-        test: /\.css$/,
-        include : SRC_DIR
       }
-    ]
-  }
+    }
+]
+  },
+  // Default mode for Webpack is production.
+  // Depending on mode Webpack will apply different things
+  // on final bundle. For now we don't need production's JavaScript
+  // minifying and other thing so let's set mode to development
+  mode: 'development'
+
 };
+
