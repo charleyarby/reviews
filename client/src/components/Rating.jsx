@@ -21,11 +21,11 @@ const Rating = (props) => {
     allRatings.Value += props.allReviews[review].Value
   }
 
-  allRatings.Checkin = allRatings.Checkin/props.allReviews.length
-  allRatings.Communication = allRatings.Communication/props.allReviews.length
-  allRatings.Location = allRatings.Location/props.allReviews.length
-  allRatings.Cleanliness = allRatings.Cleanliness/props.allReviews.length
-  allRatings.Accuracy = allRatings.Accuracy/props.allReviews.length
+  allRatings.Checkin = (allRatings.Checkin/props.allReviews.length)
+  allRatings.Communication = (allRatings.Communication/props.allReviews.length)
+  allRatings.Location = (allRatings.Location/props.allReviews.length)
+  allRatings.Cleanliness = (allRatings.Cleanliness/props.allReviews.length)
+  allRatings.Accuracy = (allRatings.Accuracy/props.allReviews.length)
   allRatings.Value = allRatings.Value/props.allReviews.length
   allRatings.Average = allRatings.Checkin+allRatings.Communication+allRatings.Location+allRatings.Cleanliness+allRatings.Accuracy+allRatings.Value
 
@@ -33,16 +33,27 @@ const Rating = (props) => {
   allRatings.Average = Number(allRatings.Average)
 
   var Checkin= width* (allRatings.Checkin/5)
+  Checkin = Checkin.toFixed(1)
   Checkin= Checkin.toString() + '%'
+
   var Cleanliness= width* (allRatings.Cleanliness/5)
+  Cleanliness= Cleanliness.toFixed(1)
   Cleanliness= Cleanliness.toString() + '%'
+
   var Communication= width* (allRatings.Communication/5)
+  Communication= Communication.toFixed(1)
   Communication= Communication.toString() + '%'
+
   var Accuracy= width* (allRatings.Accuracy/5)
+  Accuracy= Accuracy.toFixed(1)
   Accuracy= Accuracy.toString() + '%'
+
   var Location= width* (allRatings.Location/5)
+  Location=Location.toFixed(1)
   Location= Location.toString() + '%'
+
   var Value= width* (allRatings.Value/5)
+  Value=Value.toFixed(1)
   Value= Value.toString() + '%'
 
   return(

@@ -43,7 +43,7 @@ class App extends React.Component {
       <div className='Review'>
         <Rating allReviews={this.state.reviews}/>
         <AllReviews allReviews={this.state.currentReviews}/>
-        <PageButtons allReviews={this.state.reviews} setPage={this.setCurrentReview} buttons={this.state.currentButtons} currentButton={this.state.currentPage}/>
+        <PageButtons allReviews={this.state.reviews} setPage={this.setCurrentReview} buttons={this.state.currentButtons} currentPage={this.state.currentPage}/>
       </div>
     )
   }
