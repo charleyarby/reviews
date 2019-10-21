@@ -5,12 +5,19 @@ class PageButtons extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
-      reviews: []
+      pageButtons: []
     }
+    this.setButtons = this.setButtons.bind(this);
+
+  }
+
+
+  setButtons() {
+
   }
   render() {
     return(
-      <RenderButtons setPage={this.props.setPage}/>
+      <RenderButtons setPage={this.props.setPage} pages={this.props.buttons} currentPage={this.props.currentPage}/>
     )
   }
 }

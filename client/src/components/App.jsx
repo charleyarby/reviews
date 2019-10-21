@@ -4,6 +4,7 @@ import OwnerReply from './reply.jsx'
 import AllReviews from './allReviews.jsx'
 import Rating from './Rating.jsx'
 import PageButtons from './PageButtons.jsx'
+var _ = require('underscore');
 //import '../../dist/styles.css'
 
 
@@ -13,7 +14,8 @@ class App extends React.Component {
     this.state ={
       reviews: [],
       currentReviews:[],
-      currentPage:1
+      currentPage:1,
+      currentButtons:[]
     }
     this.setCurrentReview = this.setCurrentReview.bind(this);
   }
@@ -22,7 +24,8 @@ class App extends React.Component {
     .then((data)=> {
       this.setState({
       reviews: data.data,
-      currentReviews: data.data.slice(0,7)
+      currentReviews: data.data.slice(0,7),
+      currentButtons: _.range(1,Math.ceil(data.data.length/7))
       })
     })
   }
@@ -40,7 +43,7 @@ class App extends React.Component {
       <div className='Review'>
         <Rating allReviews={this.state.reviews}/>
         <AllReviews allReviews={this.state.currentReviews}/>
-        <PageButtons allReviews={this.state.reviews} setPage={this.setCurrentReview}/>
+        <PageButtons allReviews={this.state.reviews} setPage={this.setCurrentReview} buttons={this.state.currentButtons} currentButton={this.state.currentPage}/>
       </div>
     )
   }
