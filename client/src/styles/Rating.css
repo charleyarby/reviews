@@ -1,0 +1,40 @@
+.ratingSection {
+  position:relative;
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding-bottom: 20px;
+}
+
+.averageRating{
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+  border-right: 1px solid rgb(221, 221, 221);
+  padding-right: 10px;
+  margin-bottom:20px;
+
+}
+
+.categoriesSection{
+  margin-top:20px;
+}
+.categories {
+  float:left;
+  width:50%;
+}
+
+.categoryRow {
+  padding-bottom: 30px;
+}
+
+.leftRating{
+  position:absolute;
+  left: 32%;
+}
+
+.rightRating{
+  position:absolute;
+  left: 82%;
+}

@@ -3,7 +3,7 @@ import React from 'react'
 const PageButtons = (props) => {
 
   return(
-    <div>4</div>
+    <button>4</button>
   )
 
 }
