@@ -114,7 +114,7 @@ let save = (reviews, cb) => {
 }
 
 
-//save();
+save();
 
 //console.log(faker.image.avatar())
 

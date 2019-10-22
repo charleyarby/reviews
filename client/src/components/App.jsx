@@ -4,6 +4,7 @@ import OwnerReply from './reply.jsx'
 import AllReviews from './allReviews.jsx'
 import Rating from './Rating.jsx'
 import PageButtons from './PageButtons.jsx'
+import Search from './Search.jsx'
 var _ = require('underscore');
 //import '../../dist/styles.css'
 
@@ -15,18 +16,51 @@ class App extends React.Component {
       reviews: [],
       currentReviews:[],
       currentPage:1,
-      currentButtons:[]
+      currentButtons:[],
+      filteredReview:[],
+      searchTerm:''
     }
     this.setCurrentReview = this.setCurrentReview.bind(this);
+    this.searchReviews = this.searchReviews.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount(){
-    Axios.get('/0')
+    Axios.get('/rooms/0')
     .then((data)=> {
       this.setState({
       reviews: data.data,
       currentReviews: data.data.slice(0,7),
       currentButtons: _.range(1,Math.ceil(data.data.length/7))
       })
+    })
+  }
+  searchReviews(event){
+    event.preventDefault();
+    var allReviews= this.state.reviews;
+    var filteredReview=[]
+    console.log(allReviews[3].Content)
+     for(var i=0; i<allReviews.length; i++) {
+       if(allReviews[i].Content.includes(this.state.searchTerm)){
+         console.log('includes term', this.state.searchTerm)
+         filteredReview.push(allReviews[i])
+       } else if(allReviews[i].Title.includes(this.state.searchTerm)){
+        filteredReview.push(allReviews[i])
+       }
+     }
+     console.log(filteredReview)
+    this.setState({
+      currentReviews: filteredReview,
+      currentButtons: _.range(1,Math.ceil(filteredReview.length/7))
+    })
+
+    console.log('in search')
+  }
+
+  handleChange(event) {
+    var target = event.target;
+    var term = target.value;
+    this.setState({
+      searchTerm: term
     })
   }
 
@@ -42,6 +76,7 @@ class App extends React.Component {
     return(
       <div className='Review'>
         <Rating allReviews={this.state.reviews}/>
+        <Search allReviews={this.state.reviews} search={this.searchReviews} handleChange={this.handleChange} value={this.state.searchTerm}/>
         <AllReviews allReviews={this.state.currentReviews}/>
         <PageButtons allReviews={this.state.reviews} setPage={this.setCurrentReview} buttons={this.state.currentButtons} currentPage={this.state.currentPage}/>
       </div>

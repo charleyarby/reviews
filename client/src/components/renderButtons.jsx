@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../styles/renderButtons.css'
 const RenderButton = (props) => {
   var ButtonArray=[]
   var allButton=props.pages
@@ -7,6 +7,7 @@ const RenderButton = (props) => {
   if(props.pages.length>3) {
     ButtonArray=allButton.slice(0,3)
     ButtonArray.push('...')
+    ButtonArray.push(allButton.length)
     ButtonArray.push('>')
   }
   if(props.pages.length>10) {
@@ -77,17 +78,20 @@ const RenderButton = (props) => {
   }
 
   return (
-    <div>
+    <div className='allButton'>
       {ButtonArray.length > 1 &&
       ButtonArray.map((page)=> {
-        if(typeof page === 'number') {
-        return(<button onClick={()=>props.setPage(page)}>{page}</button>)
-        } else if(page==='...') {
-          return(<button >{page}</button>)
+        if(typeof page === 'number' && page===props.currentPage) {
+          console.log('in current page')
+          return(<button className="currentPageBut" onClick={()=>props.setPage(page)}>{page}</button>)
+        } else if(typeof page === 'number'){
+          return(<button className="pageBut" onClick={()=>props.setPage(page)}>{page}</button>)
+        }else if(page==='...') {
+          return(<button className="tripleDot" >{page}</button>)
         } else if(page=== '<') {
-          return(<button onClick={()=>props.setPage(1)}>{page}</button>)
+          return(<button  className="endPageBut" onClick={()=>props.setPage(props.currentPage-1)}>{page}</button>)
         } else if(page=== '>') {
-          return(<button onClick={()=>props.setPage(allButton.length)}>{page}</button>)
+          return(<button className="endPageBut" onClick={()=>props.setPage(props.currentPage+1)}>{page}</button>)
         }
 
       })}

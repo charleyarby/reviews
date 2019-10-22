@@ -17,6 +17,13 @@
 
 }
 
+.reviewsLabel{
+  margin-left:8%;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+}
+
 .categoriesSection{
   margin-top:20px;
 }

@@ -21,16 +21,18 @@ const Rating = (props) => {
     allRatings.Value += props.allReviews[review].Value
   }
 
-  allRatings.Checkin = (allRatings.Checkin/props.allReviews.length)
-  allRatings.Communication = (allRatings.Communication/props.allReviews.length)
-  allRatings.Location = (allRatings.Location/props.allReviews.length)
-  allRatings.Cleanliness = (allRatings.Cleanliness/props.allReviews.length)
-  allRatings.Accuracy = (allRatings.Accuracy/props.allReviews.length)
-  allRatings.Value = allRatings.Value/props.allReviews.length
-  allRatings.Average = allRatings.Checkin+allRatings.Communication+allRatings.Location+allRatings.Cleanliness+allRatings.Accuracy+allRatings.Value
+  allRatings.Checkin = (allRatings.Checkin/props.allReviews.length).toFixed(1)
+  allRatings.Communication = (allRatings.Communication/props.allReviews.length).toFixed(1)
+  allRatings.Location = (allRatings.Location/props.allReviews.length).toFixed(1)
+  allRatings.Cleanliness = (allRatings.Cleanliness/props.allReviews.length).toFixed(1)
+  allRatings.Accuracy = (allRatings.Accuracy/props.allReviews.length).toFixed(1)
+  allRatings.Value = (allRatings.Value/props.allReviews.length).toFixed(1)
+  allRatings.Average = Number(allRatings.Checkin)+Number(allRatings.Communication)+Number(allRatings.Location)+Number(allRatings.Cleanliness)+Number(allRatings.Accuracy)+Number(allRatings.Value)
 
   allRatings.Average = (allRatings.Average/6).toFixed(2)
   allRatings.Average = Number(allRatings.Average)
+
+
 
   var Checkin= width* (allRatings.Checkin/5)
   Checkin = Checkin.toFixed(1)
@@ -60,6 +62,7 @@ const Rating = (props) => {
   <div className="ratingSection">
     <div className='averageRating'>{allRatings.Average}</div>
     <span style={starStyle}>&#9733;</span>
+    <span className='reviewsLabel'>Reviews</span>
     <div className='categoriesSection'>
       <div className='categoryRow'>
         <div className='categories'>
