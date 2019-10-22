@@ -4,14 +4,59 @@ const RenderButton = (props) => {
   var ButtonArray=[]
   var allButton=props.pages
 
-  if(props.pages.length>3) {
-    ButtonArray=allButton.slice(0,3)
-    ButtonArray.push('...')
-    ButtonArray.push(allButton.length)
-    ButtonArray.push('>')
+  if(props.pages.length===2) {
+    ButtonArray.push(1)
+    ButtonArray.push(2)
+    if(props.currentPage===1){
+      ButtonArray.push('>')
+    } else{
+      ButtonArray.unshift('<')
+    }
   }
-  if(props.pages.length>10) {
-    if(props.currentPage>1) {
+
+  if(props.pages.length===3) {
+    ButtonArray.push(1)
+    ButtonArray.push(2)
+    ButtonArray.push(3)
+    if(props.currentPage===1){
+      ButtonArray.push('>')
+    } else if(props.currentPage===2){
+      ButtonArray.unshift('<')
+      ButtonArray.push(">")
+    }else if(props.currentPage===3){
+      ButtonArray.unshift('<')
+    }
+  }
+
+  if(props.pages.length===4) {
+    ButtonArray.push(1)
+    ButtonArray.push(2)
+    ButtonArray.push(3)
+    ButtonArray.push(4)
+    if(props.currentPage===1){
+      ButtonArray.push(">")
+    }else if (props.currentPage===2 || props.currentPage===3) {
+      ButtonArray.unshift("<")
+      ButtonArray.push(">")
+    }else if(props.currentPage===4) {
+      ButtonArray.unshift("<")
+    }
+  }
+
+  // if(props.pages.length>4) {
+  //   ButtonArray=allButton.slice(0,3)
+  //   ButtonArray.push('...')
+  //   ButtonArray.push(allButton.length)
+  //   ButtonArray.push('>')
+  // }
+  if(props.pages.length>4) {
+    if(props.currentPage===1) {
+      var ButtonArray=allButton.slice(0,3)
+      ButtonArray.push('...')
+      ButtonArray.push(allButton.length)
+      ButtonArray.push('>')
+    }
+    else if(props.currentPage>1) {
       var ButtonArray=[]
       ButtonArray.push('<')
       if(props.currentPage===2) {
@@ -19,20 +64,23 @@ const RenderButton = (props) => {
         ButtonArray.push(2)
         ButtonArray.push(3)
         ButtonArray.push('...')
+        ButtonArray.push(allButton.length)
       }
-      if(props.currentPage===3) {
+      else if(props.currentPage===3) {
         for(var i=1; i<=4; i++) {
           ButtonArray.push(i)
         }
         ButtonArray.push('...')
+        ButtonArray.push(allButton.length)
       }
-      if(props.currentPage===4) {
+      else if(props.currentPage===4) {
         for(var i=1; i<=5; i++) {
           ButtonArray.push(i)
         }
         ButtonArray.push('...')
+        ButtonArray.push(allButton.length)
       }
-      if(props.currentPage>=5 && props.currentPage<=allButton.length-4) {
+      else if(props.currentPage>=5 && props.currentPage<=allButton.length-4) {
         console.log('in 5')
         ButtonArray.push(1)
         ButtonArray.push('...')
@@ -42,7 +90,7 @@ const RenderButton = (props) => {
         ButtonArray.push('...')
         ButtonArray.push(allButton.length)
       }
-      if(props.currentPage===allButton.length-3){
+      else if(props.currentPage===allButton.length-3){
         console.log('in button length -3')
         ButtonArray.push(1)
         ButtonArray.push('...')
@@ -50,28 +98,28 @@ const RenderButton = (props) => {
           ButtonArray.push(i)
         }
       }
-      if(props.currentPage===allButton.length-2){
+      else if(props.currentPage===allButton.length-2){
         ButtonArray.push(1)
         ButtonArray.push('...')
         for(var i=allButton.length-3; i<=allButton.length; i++) {
           ButtonArray.push(i)
         }
       }
-      if(props.currentPage===allButton.length-1){
+      else if(props.currentPage===allButton.length-1){
         ButtonArray.push(1)
         ButtonArray.push('...')
         for(var i=allButton.length-2; i<=allButton.length; i++) {
           ButtonArray.push(i)
         }
       }
-      if(props.currentPage===allButton.length){
+      else if(props.currentPage===allButton.length){
         ButtonArray.push(1)
         ButtonArray.push('...')
         for(var i=allButton.length-2; i<=allButton.length; i++) {
           ButtonArray.push(i)
         }
       }
-      if(props.currentPage != allButton.length){
+      else if(props.currentPage != allButton.length){
       ButtonArray.push('>')
       }
     }

@@ -24,6 +24,7 @@ class App extends React.Component {
     this.setCurrentReview = this.setCurrentReview.bind(this);
     this.searchReviews = this.searchReviews.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.backToReview = this.backToReview.bind(this);
   }
   componentDidMount(){
     Axios.get('/rooms/0')
@@ -40,6 +41,7 @@ class App extends React.Component {
     event.preventDefault();
     var allReviews= this.state.reviews;
     var filteredReview=[]
+    var buttons=[]
     console.log(allReviews[3].Content)
      for(var i=0; i<allReviews.length; i++) {
        if(allReviews[i].Content.includes(this.state.searchTerm)){
@@ -50,9 +52,12 @@ class App extends React.Component {
        }
      }
      console.log(filteredReview)
+     for(var i=1; i<=Math.ceil(filteredReview.length/7); i++) {
+       buttons.push(i)
+     }
     this.setState({
       filteredReview: filteredReview,
-      currentButtons: _.range(1,Math.ceil(filteredReview.length/7)),
+      currentButtons:buttons,
       search:true,
       currentPage:1,
       currentReviews: filteredReview.slice(((page-1)*7), ((page-1)*7)+7)
@@ -60,7 +65,16 @@ class App extends React.Component {
 
     console.log('in search')
   }
-
+  backToReview() {
+    console.log('toReview')
+    var allReviews=this.state.reviews
+    this.setState({
+      currentReviews: allReviews.slice(((1-1)*7), ((1-1)*7)+7),
+      search:false,
+      currentPage:1,
+      currentButtons: _.range(1,Math.ceil(allReviews.length/7))
+    })
+  }
   handleChange(event) {
     var target = event.target;
     var term = target.value;
@@ -93,7 +107,7 @@ class App extends React.Component {
     return(
       <div className='Review'>
         <Rating allReviews={this.state.reviews}/>
-        <Search allReviews={this.state.reviews} search={this.searchReviews} handleChange={this.handleChange} value={this.state.searchTerm}/>
+        <Search allReviews={this.state.reviews} search={this.searchReviews} handleChange={this.handleChange} value={this.state.searchTerm} inSearch={this.state.search} numReview={this.state.filteredReview.length} toReview={this.backToReview}/>
         <AllReviews allReviews={this.state.currentReviews}/>
         <PageButtons allReviews={this.state.reviews} setPage={this.setCurrentReview} buttons={this.state.currentButtons} currentPage={this.state.currentPage}/>
       </div>
