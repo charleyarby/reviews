@@ -18,7 +18,8 @@ class App extends React.Component {
       currentPage:1,
       currentButtons:[],
       filteredReview:[],
-      searchTerm:''
+      searchTerm:'',
+      search:false
     }
     this.setCurrentReview = this.setCurrentReview.bind(this);
     this.searchReviews = this.searchReviews.bind(this);
@@ -35,6 +36,7 @@ class App extends React.Component {
     })
   }
   searchReviews(event){
+    var page=1;
     event.preventDefault();
     var allReviews= this.state.reviews;
     var filteredReview=[]
@@ -49,8 +51,11 @@ class App extends React.Component {
      }
      console.log(filteredReview)
     this.setState({
-      currentReviews: filteredReview,
-      currentButtons: _.range(1,Math.ceil(filteredReview.length/7))
+      filteredReview: filteredReview,
+      currentButtons: _.range(1,Math.ceil(filteredReview.length/7)),
+      search:true,
+      currentPage:1,
+      currentReviews: filteredReview.slice(((page-1)*7), ((page-1)*7)+7)
     })
 
     console.log('in search')
@@ -66,10 +71,22 @@ class App extends React.Component {
 
   setCurrentReview(page){
     var allReviews=this.state.reviews
+    var filteredReview=this.state.filteredReview
+    console.log(filteredReview)
+    if(this.state.search===false) {
     this.setState({
       currentPage:page,
       currentReviews: allReviews.slice(((page-1)*7), ((page-1)*7)+7)
-    })
+    })}
+    if(this.state.search===true) {
+      console.log('ssearch true')
+      this.setState({
+        currentPage:page,
+        currentReviews: filteredReview.slice(((page-1)*7), ((page-1)*7)+7)
+      })
+
+    }
+
   }
 
   render(){
