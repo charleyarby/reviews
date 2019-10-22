@@ -8,12 +8,18 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
-app.use(express.static(__dirname+ '/../client/dist'));
+app.use(express.static(__dirname+ '/../client/dist'))
 
-app.get('/rooms/:id', (req, res) => {
- // console.log(req.url, 'this is req')
-  var room = req.url.slice(7)
+app.use('/rooms/:id', express.static(__dirname+ '/../client/dist'))
+
+
+
+app.get('/roomID/:id', (req, res) => {
+  console.log(req.route.path, 'this is req')
+  var room = req.url.slice(8,9)
+  console.log(room, 'this is room')
   room = Number(room)
+  console.log(room)
 
   db.getAll(room, (err, data)=>{
     res.send(data);

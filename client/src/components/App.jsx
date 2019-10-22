@@ -20,7 +20,8 @@ class App extends React.Component {
       currentButtons:[],
       filteredReview:[],
       searchTerm:'',
-      search:false
+      search:false,
+
     }
     this.setCurrentReview = this.setCurrentReview.bind(this);
     this.searchReviews = this.searchReviews.bind(this);
@@ -28,12 +29,17 @@ class App extends React.Component {
     this.backToReview = this.backToReview.bind(this);
   }
   componentDidMount(){
-    Axios.get('http://localhost:3001/rooms/0')
+   // console.log(`http://localhost:3001${window.location.pathname}`);
+    var id=window.location.pathname
+    id = id.slice(7)
+    console.log(id)
+    Axios.get(`http://localhost:3001/roomID/${id}`)
     .then((data)=> {
       this.setState({
       reviews: data.data,
       currentReviews: data.data.slice(0,7),
-      currentButtons: _.range(1,Math.ceil(data.data.length/7))
+      currentButtons: _.range(1,Math.ceil(data.data.length/7)),
+      id: id
       })
     })
 
