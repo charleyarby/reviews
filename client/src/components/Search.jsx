@@ -5,7 +5,6 @@ const Search = (props) => {
 
 
   var filteredReviews=[]
-  console.log(props)
   if(props.inSearch===false) {
     return(
 

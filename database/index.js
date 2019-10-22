@@ -13,8 +13,8 @@ db.once('open', function() {
 
 let Review = mongoose.model('Reviews', seedDb.reiewSchema);
 
-let getAll = (cb) => {
-  Review.find({ListingID:0})
+let getAll = (room, cb) => {
+  Review.find({ListingID:room})
   .sort({Time: 'desc'})
 
   .exec(cb)

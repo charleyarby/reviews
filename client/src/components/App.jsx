@@ -5,6 +5,7 @@ import AllReviews from './allReviews.jsx'
 import Rating from './Rating.jsx'
 import PageButtons from './PageButtons.jsx'
 import Search from './Search.jsx'
+import '../styles/app.css'
 var _ = require('underscore');
 //import '../../dist/styles.css'
 
@@ -27,7 +28,7 @@ class App extends React.Component {
     this.backToReview = this.backToReview.bind(this);
   }
   componentDidMount(){
-    Axios.get('/rooms/0')
+    Axios.get('http://localhost:3001/rooms/0')
     .then((data)=> {
       this.setState({
       reviews: data.data,
@@ -35,6 +36,7 @@ class App extends React.Component {
       currentButtons: _.range(1,Math.ceil(data.data.length/7))
       })
     })
+
   }
   searchReviews(event){
     var page=1;
@@ -42,16 +44,13 @@ class App extends React.Component {
     var allReviews= this.state.reviews;
     var filteredReview=[]
     var buttons=[]
-    console.log(allReviews[3].Content)
      for(var i=0; i<allReviews.length; i++) {
        if(allReviews[i].Content.includes(this.state.searchTerm)){
-         console.log('includes term', this.state.searchTerm)
          filteredReview.push(allReviews[i])
        } else if(allReviews[i].Title.includes(this.state.searchTerm)){
         filteredReview.push(allReviews[i])
        }
      }
-     console.log(filteredReview)
      for(var i=1; i<=Math.ceil(filteredReview.length/7); i++) {
        buttons.push(i)
      }
@@ -63,10 +62,10 @@ class App extends React.Component {
       currentReviews: filteredReview.slice(((page-1)*7), ((page-1)*7)+7)
     })
 
-    console.log('in search')
+
   }
   backToReview() {
-    console.log('toReview')
+
     var allReviews=this.state.reviews
     this.setState({
       currentReviews: allReviews.slice(((1-1)*7), ((1-1)*7)+7),
@@ -86,14 +85,13 @@ class App extends React.Component {
   setCurrentReview(page){
     var allReviews=this.state.reviews
     var filteredReview=this.state.filteredReview
-    console.log(filteredReview)
     if(this.state.search===false) {
     this.setState({
       currentPage:page,
       currentReviews: allReviews.slice(((page-1)*7), ((page-1)*7)+7)
     })}
     if(this.state.search===true) {
-      console.log('ssearch true')
+
       this.setState({
         currentPage:page,
         currentReviews: filteredReview.slice(((page-1)*7), ((page-1)*7)+7)

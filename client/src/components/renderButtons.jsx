@@ -12,9 +12,7 @@ const RenderButton = (props) => {
     } else{
       ButtonArray.unshift('<')
     }
-  }
-
-  if(props.pages.length===3) {
+  }else if(props.pages.length===3) {
     ButtonArray.push(1)
     ButtonArray.push(2)
     ButtonArray.push(3)
@@ -26,9 +24,7 @@ const RenderButton = (props) => {
     }else if(props.currentPage===3){
       ButtonArray.unshift('<')
     }
-  }
-
-  if(props.pages.length===4) {
+  }else if(props.pages.length===4) {
     ButtonArray.push(1)
     ButtonArray.push(2)
     ButtonArray.push(3)
@@ -41,6 +37,29 @@ const RenderButton = (props) => {
     }else if(props.currentPage===4) {
       ButtonArray.unshift("<")
     }
+  }else if(props.pages.length===5) {
+    ButtonArray.push(1)
+    ButtonArray.push(2)
+    ButtonArray.push(3)
+    if(props.currentPage===1){
+      ButtonArray.push('>')
+    }else if(props.currentPage===2){
+      ButtonArray.unshift("<")
+      ButtonArray.push('>')
+    }else if(props.currentPage===3){
+      ButtonArray.unshift("<")
+      ButtonArray.push(4)
+      ButtonArray.push('>')
+    }else if (props.currentPage===4) {
+      ButtonArray.unshift("<")
+      ButtonArray.push(4)
+      ButtonArray.push(5)
+      ButtonArray.push('>')
+    }else if(props.currentPage===5) {
+      ButtonArray.unshift("<")
+      ButtonArray.splice(2,0,'...')
+      ButtonArray.push(4)
+    }
   }
 
   // if(props.pages.length>4) {
@@ -49,7 +68,7 @@ const RenderButton = (props) => {
   //   ButtonArray.push(allButton.length)
   //   ButtonArray.push('>')
   // }
-  if(props.pages.length>4) {
+  if(props.pages.length>5) {
     if(props.currentPage===1) {
       var ButtonArray=allButton.slice(0,3)
       ButtonArray.push('...')
@@ -65,6 +84,7 @@ const RenderButton = (props) => {
         ButtonArray.push(3)
         ButtonArray.push('...')
         ButtonArray.push(allButton.length)
+
       }
       else if(props.currentPage===3) {
         for(var i=1; i<=4; i++) {
@@ -119,7 +139,7 @@ const RenderButton = (props) => {
           ButtonArray.push(i)
         }
       }
-      else if(props.currentPage != allButton.length){
+      if(props.currentPage != allButton.length){
       ButtonArray.push('>')
       }
     }
@@ -130,7 +150,6 @@ const RenderButton = (props) => {
       {ButtonArray.length > 1 &&
       ButtonArray.map((page)=> {
         if(typeof page === 'number' && page===props.currentPage) {
-          console.log('in current page')
           return(<button className="currentPageBut" onClick={()=>props.setPage(page)}>{page}</button>)
         } else if(typeof page === 'number'){
           return(<button className="pageBut" onClick={()=>props.setPage(page)}>{page}</button>)

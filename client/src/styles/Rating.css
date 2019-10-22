@@ -34,14 +34,17 @@
 
 .categoryRow {
   padding-bottom: 30px;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
 }
 
 .leftRating{
   position:absolute;
   left: 32%;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
 }
 
 .rightRating{
   position:absolute;
   left: 82%;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
 }
