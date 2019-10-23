@@ -42,7 +42,6 @@ class App extends React.Component {
       id: id
       })
     })
-
   }
   searchReviews(event){
     var page=1;
