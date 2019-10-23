@@ -30,7 +30,7 @@ let reviewSchema = mongoose.Schema({
 	Checkin: Number,
   Location: Number,
   Reply: String,
-  Owner: String,
+  OwnerName: String,
   OwnerPic: String
 });
 
@@ -64,7 +64,15 @@ function getRandomInt(max) {
 }
 
 let save = (reviews, cb) => {
-
+  var test=0;
+  var ownerInfo =[]
+  for(var i=0; i<10; i++) {
+    var ownerPic = faker.image.avatar();
+    var ownerName = faker.name.firstName();
+    ownerInfo.push({pic: ownerPic,
+                     name: ownerName
+                   })
+    }
   for(var i=0; i<10; i++) {
     var numReviews = Math.floor(Math.random() * Math.floor(100));
     for(var j=0; j<=numReviews; j++) {
@@ -86,6 +94,8 @@ let save = (reviews, cb) => {
                       Communication: getRandomInt(4)+1,
                       Checkin: getRandomInt(4)+1,
                       Location: getRandomInt(4)+1,
+                      OwnerName: ownerInfo[i].name,
+                      OwnerPic: ownerInfo[i].pic
                       };
       if(replyornot===2 || replyornot===3 ) {
         var replies = {Reply: lorem.generateParagraphs(1)}
@@ -104,8 +114,7 @@ let save = (reviews, cb) => {
 }
 
 
-
-save();
+//save();
 
 //console.log(faker.image.avatar())
 
