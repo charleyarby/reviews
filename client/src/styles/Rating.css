@@ -52,3 +52,7 @@
   left: 82%;
   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
 }
+
+.ratingPicture {
+  width: 90%;
+}

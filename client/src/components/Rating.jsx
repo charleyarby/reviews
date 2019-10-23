@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/Rating.css'
+import rating from "../styles/ratingItem.png"
 
 const Rating = (props) => {
   var allRatings={
@@ -161,6 +162,7 @@ const Rating = (props) => {
           </div>
           <div>Value</div>
         </div>
+        <img  className="ratingPicture"/>
       </div>
     </div>
   </div>
