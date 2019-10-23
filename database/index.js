@@ -16,7 +16,6 @@ let Review = mongoose.model('Reviews', seedDb.reiewSchema);
 let getAll = (room, cb) => {
   Review.find({ListingID:room})
   .sort({Time: 'desc'})
-
   .exec(cb)
 }
 

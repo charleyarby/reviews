@@ -15,12 +15,8 @@ app.use('/rooms/:id', express.static(__dirname+ '/../client/dist'))
 
 
 app.get('/roomID/:id', (req, res) => {
-  console.log(req.route.path, 'this is req')
-  var room = req.url.slice(8,9)
-  console.log(room, 'this is room')
+  var room = req.url.split('/')[2]
   room = Number(room)
-  console.log(room)
-
   db.getAll(room, (err, data)=>{
     res.send(data);
   })

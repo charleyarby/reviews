@@ -9,7 +9,7 @@ const Search = (props) => {
     return(
 
       <form onSubmit={props.search}>
-        <input value={props.value} type="text" placeholder="Search reviews" onChange={props.handleChange} />
+        <input className="searchStyle" value={props.value} type="text" placeholder="Search reviews" onChange={props.handleChange} />
       </form>
     )
   }else{

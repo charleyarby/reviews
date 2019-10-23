@@ -30,9 +30,9 @@ class App extends React.Component {
   }
   componentDidMount(){
    // console.log(`http://localhost:3001${window.location.pathname}`);
-    var id=window.location.pathname
-    id = id.slice(7)
-    console.log(id)
+    var id=window.location.pathname.split('/')[2]
+    //id = id.slice(7)
+    //console.log(id, 'this is id')
     Axios.get(`http://localhost:3001/roomID/${id}`)
     .then((data)=> {
       this.setState({
@@ -119,5 +119,3 @@ class App extends React.Component {
 }
 
 export default App
-
-
